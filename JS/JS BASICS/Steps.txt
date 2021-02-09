@@ -1,0 +1,55 @@
+STEPS: LOAD THE PROJECT 
+ADD a app.js file
+
+FIRST EXERCISE:
+-> alert()
+
+Exercise 2:
+function -> alert
+
+Exercise 3: 
+function -> Change string values
+
+
+function test(){
+  currentCalculationOutput.textContent = "INPUT VALUE -> " + userInput.value; 
+  currentResultOutput.textContent = "RANDOM STRING"
+}
+
+addBtn.addEventListener('click' , test)
+
+=========================================================
+
+CASTING
+
+
+function test(){
+  currentCalculationOutput.textContent = currentCalculationOutput.textContent + userInput.value; 
+  currentResultOutput.textContent = "RANDOM STRING"
+}
+
+addBtn.addEventListener('click' , test)
+
+-----------------> PROBLEM: STRING
+
+
+function test(){
+  currentCalculationOutput.textContent = parseInt( currentCalculationOutput.textContent) + parseInt(userInput.value); 
+  currentResultOutput.textContent = "RANDOM STRING"
+}
+
+addBtn.addEventListener('click' , test)
+
+------> OR USE THE SHORTCUT + TO PARSE NUMEBR:
+currentCalculationOutput.textContent = +currentCalculationOutput.textContent + +userInput.value; 
+
+===============================
+ADD FUNCTIONS FOR ALL BUTTONS
+
+function add(){
+  const currentNumber = currentResultOutput.textContent
+  currentCalculationOutput.textContent = currentNumber + " + " + userInput.value
+  currentResultOutput.textContent = +currentNumber + +userInput.value;
+}
+
+===========================

@@ -1,0 +1,90 @@
+1) CREATE EXPRESS SERVER
+
+const express = require('express')
+const app = express()
+
+app.get('/' ,(req,res) => {
+    res.send('HOME')
+})
+
+
+app.get('*' ,(req,res) => {
+    res.send('ERROR!!! PAGE NOT FOUND')
+    })
+
+
+app.listen(8080, () => console.log('LISTENING ON 8080'))
+
+========================================================================
+
+STEP 2) npm i ejs
+
+// SET THE VIEW ENGINE TO EJS
+app.set('view engine' , 'ejs')
+
+Step 3) MODIFY HOME ROUTE
+
+app.get('/' ,(req,res) => {
+    res.send(`
+    <h1> HOME </h1>
+    <form action='/user' method='GET'>
+        <input name='id'>
+        <button type='submit'> CLICK </button>
+    </form>
+    `)
+})
+
+
+STEP 4) Take user input and add it to the url
+
+app.get('/user' ,(req,res) => {
+    res.redirect('/user/'+ req.query.id)
+ })
+
+ STEP 5) HANDLE THE ID
+
+  app.get('/user/:id' ,(req,res) => {
+    const {id} = req.params    
+    res.render('user', {id: id, name:'Yaman' , age: 22})
+   })
+
+
+STEP 6) ADD TO EJS:
+    
+    <h1>Hello, <%= name %></h1>
+    <p>AGE: <%= age %></p>
+    <h4>         Hobbies:    </h4>
+    <ul>
+        <li>Soccer</li>
+        <li>Soccer</li>
+
+    </ul>
+
+
+STEP 7) 
+
+  <h1>Hello, <%= user.name %></h1>
+    <p>AGE: <%= user.age %></p>
+    <h4>         Hobbies:    </h4>
+    <ul>
+        <% for (hobbie of user.hobbies) { %>
+            <li><%= hobbie.hobbie %></li>
+
+            <% } %>
+        
+
+    </ul>
+
+STEP 8) 
+ app.get('/user/:id' ,(req,res) => {
+    const {id} = req.params    
+
+    data = fs.readFileSync('./users.json').toString()
+    dataObject = JSON.parse(data)
+    res.render('user', {id: id, name:'Yaman' , age: 22 , user: dataObject[id]})
+   })
+
+
+STEP 9) FIND BY AGE > () // found = dataObject.find(user => user.age > id)
+FIND BY NAME 
+

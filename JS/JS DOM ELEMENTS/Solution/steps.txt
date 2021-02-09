@@ -1,0 +1,216 @@
+STEP 1) LOCATE THE HEADER BUTTON AND THE POPUP MODAL
+
+const headerAddbtn = document.querySelector('header button')
+const addModal = document.getElementById("add-modal");
+
+
+======================================================================
+
+STEP 2) TOOGLE THE VISIBILTY OF THE ADD MODAL
+
+const toogleModal = () => addModal.classList.toggle('visible')
+headerAddbtn.addEventListener('click', toogleModal)
+
+======================================================================
+
+STEP 3) LOCATE THE BACKDROP
+
+const backDrop = document.getElementById('backdrop')
+
+======================================================================
+
+STEP 4) ADD THE BACKDROP EFFECT
+
+const toogleBackDrop = () => backDrop.classList.toggle('visible')
+backDrop.addEventListener('click', toogleModal)
+
+======================================================================
+
+STEP 5) ALSO ADD THE BACKDROP EFFECT WHEN THE ADD BUTTON IS CLICKED
+-> EDIT toogleModal
+
+const toogleModal = () => {
+  addModal.classList.toggle('visible')
+  toogleBackDrop()
+}
+
+======================================================================\
+
+STEP 6) LOCATE THE CANCEL BUTTON
+
+const cancelbtn = addModal.querySelector('.btn--passive')
+
+const cancelModalHandler = () => {
+  alert('Are you sure?')
+  toogleModal()
+}
+
+cancelbtn.addEventListener('click', cancelModalHandler)
+
+
+======================================================================
+
+STEP 7) LOCATE THE ADD CONFIRMATION BUTTON AND THE INPUTS
+
+const userInputs = addModal.querySelectorAll('input')
+const confirmAddBtn = cancelbtn.nextElementSibling //OR ADD AN ID
+
+confirmAddBtn.addEventListener('click', () => {
+  const titleValue = userInputs[0].value
+  const urlValue = userInputs[1].value
+  const ratingValue = userInputs[2].value
+
+  if(ratingValue < 1 || ratingValue > 5){
+    alert('Enter Values Between 1-5')
+return
+  }
+  
+})
+
+======================================================================
+
+STEP 8) MODIFY THE CANCEL HANDLER
+
+// ONLY IF SOME DATA WAS ENTERED
+
+const cancelModalHandler = () => {
+  if(userInputs[0].value){
+    alert('Are you sure?')
+    }
+    toogleModal()
+}
+
+
+======================================================================
+
+STEP 9) 
+
+const listItems = [] // TO HOLD THE LIST OF BOOKS
+
+======================================================================
+
+STEP 10) MODIFY THE CONFIRM HANDLER
+
+ADD THIS TO THE END
+
+  // NEW ITEM OBJECT
+  const newItem = {
+    title: titleValue,
+    url: urlValue,
+    rating: ratingValue
+  }
+
+    // ADD ONJECT TO THE ARRAY
+  listItems.push(newItem)
+
+    // JUST TO TEST
+  console.log(listItems)
+
+
+======================================================================
+
+STEP 11) CLEAR THE INPUT'S AFTER ADDING THE OBJECT TO THE LIST
+
+const clearInputs = () => {
+
+  for (const userInput of userInputs){
+    userInput.value = ''
+  }
+
+}
+
+============ CALL FROM CONFIRM HANDLER
+ clearInputs()
+
+======================================================================
+
+STEP 12) TEST IT -> THEN TEST THE CANCEL (COME BACK) -> THE INFO IS STILL THERE
+SO ALSO CALL CLEAR INPUT FROM CANCEL HANDLER
+
+=======================================================================
+
+STEP 13)
+
+RENDER THE NEW ITEM
+
+const renderNewElement = (title, url, rating) => {
+  const newElement = document.createElement('li') //TO BE APPENDED IN THE LIST
+  newElement.classList.add('book-element')
+  newElement.innerHTML = `
+  <div class='book-element__image'>
+  <img src=${url}>
+  </div>
+
+  <div class='book-element__info'>
+  <h2> ${title} </h2>
+  <p> ${rating}/5 </p>
+  </div>
+  `
+
+  const listRoot = document.getElementById('book-list')
+  listRoot.append(newElement)
+
+}
+
+============ CALL FROM CONFIRM HANDLER
+renderNewElement(newItem.title, newItem.url, newItem.rating)
+
+==========================================================================
+
+STEP 14) 
+
+REMOVE THE 'List Currently Empty!!!'  DIV
+
+const updateList = () => {
+  if(listItems.length === 0){
+    entryTextSection.style.display = 'block'
+  }
+  else {
+  entryTextSection.style.display = 'none' }
+}
+
+
+============ CALL FROM CONFIRM HANDLER
+updateList()
+
+=========================================================================
+
+STEP 15) 
+
+let itemId = 0 //GLOBAL
+
+// ADDED TO THE OBJECT
+ id: itemId++,
+
+ // CHANGE FUNCTION HEADER
+const renderNewElement = (id, title, url, rating)  
+
+// CHANGE THE FUNCTION CALL
+  renderNewElement(newItem.id ,newItem.title, newItem.url, newItem.rating)
+
+=========================================================================
+
+STEP 16) IN THE RENDER
+
+  newElement.addEventListener('click' , () => {
+    alert('HELLO ' + id)
+  })
+
+=========================================================================
+
+STEP 17) 
+
+MODIFY THE addEventListener
+  newElement.addEventListener('click' , deleteItemHandler.bind(this,id))
+
+=========================================================================
+
+STEP 18) DELETE HANDLER
+
+const deleteItemHandler = (id) => {
+  alert(id)
+  }
+
+=========================================================================
+
+

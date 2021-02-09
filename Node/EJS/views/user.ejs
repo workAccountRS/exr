@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello, <%= name %></title>
+</head>
+<body>
+    
+    <% if (user) { %>
+    <h1>Hello, <%= user.name %></h1>
+    <p>AGE: <%= user.age %></p>
+    <h4>         Hobbies:    </h4>
+    <ul>
+        <% for (hobbie of user.hobbies) { %>
+            <li><%= hobbie.hobbie %></li>
+
+            <% } %>
+        
+    </ul>
+    <% } else { %>
+        <h1>NOT FOUND</h1>
+
+        <% } %>
+
+</body>
+</html>

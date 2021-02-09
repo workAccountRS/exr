@@ -1,0 +1,52 @@
+WARMUP:::
+
+EXERCISE:
+-> alert
+alert('HELLO')
+
+Exercise 2:
+addEventListener -> alert
+addBtn.addEventListener('click' , () => alert('Hello'))
+
+Exercise 3: 
+alert -> Get input value
+addBtn.addEventListener('click' , () => alert(userInput.value))
+
+Exercise 4: 
+alert -> Get result value (Change the value manually from the HTML first)
+addBtn.addEventListener('click' , () => alert(currentResultOutput.textContent))
+
+Exercise 5: 
+addEventListener -> Change result value
+addBtn.addEventListener('click' , test)
+function test(){
+  currentResultOutput.textContent = "RANDOM STRING"
+}
+
+======================================================================
+
+STEP 1) ADD THE CURRENT INPUT TO THE PREVOIUS
+
+function currentCalculation(){
+  currentCalculationOutput.textContent = currentCalculationOutput.textContent + userInput.value; 
+}
+
+addBtn.addEventListener('click' , currentCalculation)
+
+// PROBLEM --------------------- IT IS A STRING 
+
+======================================================================
+
+STEP 2) CAST THE INPUT
+
+THERE ARE 2 WAYS: 
+
+------> parseInt( )
+currentCalculationOutput.textContent = parseInt( currentCalculationOutput.textContent) + parseInt(userInput.value); 
+
+------> OR USE THE SHORTCUT '+' TO PARSE NUMEBR:
+currentCalculationOutput.textContent = +currentCalculationOutput.textContent + +userInput.value; 
+
+======================================================================
+
+STEP 3) 

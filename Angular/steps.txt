@@ -1,0 +1,276 @@
+STEP 1) CREATE A PROJECT
+npm install -g @angular/cli
+ng new my-first-project
+ng serve --open
+
+======================================================
+
+STEP 2) THE HTML STRUCTURE GOES IN app.component.html 
+-> 
+
+<h1>--ADD--</h1>
+
+<div>
+  <label for="inputField"> Length </label>
+  <input type="text" name="" id="inputField" />
+</div>
+
+<div>
+  <label for=""> Use Letters </label>
+  <input type="checkbox" name="" id="" />
+</div>
+
+<div>
+  <label for=""> Use Letters </label>
+  <input type="checkbox" name="" id="" />
+</div>
+
+<div>
+  <label for=""> Use Letters </label>
+  <input type="checkbox" name="" id="" />
+</div>
+
+<div>
+<button>Generate</button>
+</div>
+
+<div>
+  <label for=""> YOUR PASSWORD </label>
+  <input type="text" >
+</div>
+
+======================================================
+
+STEP 3) IN app.component.ts there is a selector property, this specifies what html tag will be used for this component 
+
+ADDING EVENTS: 
+-> Event Binding (Event binding allows you to listen for and respond to user actions such as keystrokes,
+ mouse movements, clicks, and touches.)
+
+
+export class AppComponent {
+  title = 'Password Generator';
+  password = '';
+
+  onButtonClick(){
+    this.password = 'RandomPassword'
+	// CONSOLE.LOG
+  }
+
+}
+
+=======================================================
+
+STEP 4) IN app.component.html 
+-> With property binding, you can do things such as toggle button functionality,
+ set paths programmatically, and share values between components.
+
+<h1>{{title}}</h1>
+
+<div>
+<button (click)="onButtonClick()" >Generate</button>
+</div>
+
+<div>
+  <label for=""> YOUR PASSWORD </label>
+  <input type="text" [value]="password">
+</div>
+
+==========================================================
+
+STEP 5) In app.component.html, bind an new event (change)='onChangeUseLetters()'
+
+  <div>
+    <label for="letters"> Use Letters </label>
+    <input (change)='onChangeUseLetters()' type="checkbox" name="" id="letters" />
+  </div>
+
+==========================================================
+
+STEP 6) In app.component.ts 
+
+includeLetters = false;
+
+  onChangeUseLetters(){
+    this.includeLetters = !this.includeLetters;
+    console.log(this.includeLetters)
+  }
+
+===========================================================
+
+STEP 7) Add events for all other checkboxes, then edit the app.component.ts
+
+export class AppComponent {
+  title = 'Password Generator';
+  password = '';
+  includeLetters = false;
+  includeNumbers = false;
+  includeSymbols = false;
+
+  logAll(){
+    console.log("Letters" , this.includeLetters)
+    console.log("Numbers" , this.includeNumbers)
+    console.log("Symbols" , this.includeSymbols)
+    console.log("--------------")
+
+    
+  }
+
+  onChangeUseLetters(){
+    this.includeLetters = !this.includeLetters;
+    this.logAll()
+  }
+
+  onChangeUseNumbers(){
+    this.includeNumbers = !this.includeNumbers;
+    this.logAll()
+  }
+
+  onChangeUseSymbols(){
+    this.includeSymbols = !this.includeSymbols;
+    this.logAll()
+  }
+  
+  onButtonClick(){
+    this.password = 'RandomPassword'
+  }
+
+}
+
+===========================================================
+
+STEP 8) Add a new event for the length:
+
+in app.component.html 
+-> 
+
+  <div>
+    <label for="inputField"> Length </label>
+    <input (input)='onChangeLength($event.target.value)' type="text" name="" id="inputField" />
+  </div>
+
+
+in app.component.ts
+-> 
+
+export class AppComponent {
+  title = 'Password Generator';
+  password = '';
+  length = 0;
+  includeLetters = false;
+  includeNumbers = false;
+  includeSymbols = false;
+
+  onChangeLength(value: string){
+    const parsedValue = parseInt(value)
+    if(!isNaN(parsedValue)) {
+      this.length = parsedValue
+    }
+    else{
+      console.log('ERROR ... NOT A NUMBER')
+    }
+
+  }
+
+  logAll(){
+    console.log("Length" , this.length)
+    console.log("Letters" , this.includeLetters)
+    console.log("Numbers" , this.includeNumbers)
+    console.log("Symbols" , this.includeSymbols)
+    console.log("--------------")
+
+    
+  }
+
+  onChangeUseLetters(){
+    this.includeLetters = !this.includeLetters;
+    this.logAll()
+  }
+
+  onChangeUseNumbers(){
+    this.includeNumbers = !this.includeNumbers;
+    this.logAll()
+  }
+
+  onChangeUseSymbols(){
+    this.includeSymbols = !this.includeSymbols;
+    this.logAll()
+  }
+  
+  onButtonClick(){
+    this.password = 'RandomPassword'
+  }
+
+}
+
+
+
+===========================================================
+
+STEP 9) 
+
+export class AppComponent {
+  title = 'Password Generator';
+  password = '';
+  length = 0;
+  includeLetters = false;
+  includeNumbers = false;
+  includeSymbols = false;
+  allowedCharacters : string;
+
+  onChangeLength(value: string){
+
+    const parsedValue = parseInt(value)
+    if(!isNaN(parsedValue)) {
+      this.length = parsedValue
+    }
+    else{
+      console.log('ERROR ... NOT A NUMBER')
+    }
+
+  }
+
+  validateCharacters(){
+    this.allowedCharacters = ''
+    const allowedNumbers = '0123456789'
+    const allowedLetters = 'qwertyuiopasdfghjklzxcvbnm'
+    const allowedSymbols = '!@#$%^&*()=+'
+
+    if(this.includeLetters){
+      this.allowedCharacters += allowedLetters;
+    }
+    if(this.includeNumbers){
+      this.allowedCharacters += allowedNumbers;
+    }
+    if(this.includeSymbols){
+      this.allowedCharacters += allowedSymbols;
+    }
+
+  }
+
+  onChangeUseLetters(){
+    this.includeLetters = !this.includeLetters;
+  }
+
+  onChangeUseNumbers(){
+    this.includeNumbers = !this.includeNumbers;
+  }
+
+  onChangeUseSymbols(){
+    this.includeSymbols = !this.includeSymbols;
+  }
+  
+  onButtonClick(){
+    this.validateCharacters()
+    let generatedPassword = ''
+    for(let i = 0 ; i< this.length ; i++){
+      let randomIndex = Math.floor(Math.random() * this.allowedCharacters.length)
+      generatedPassword += this.allowedCharacters[randomIndex]
+
+    }
+
+    this.password = generatedPassword
+
+  }
+
+}

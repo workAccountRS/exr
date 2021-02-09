@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "name": "Ahmad",
+        "age": 33,
+        "hobbies": [
+            {
+                "hobbie": "Soccer",
+                "rating": 5
+            },
+            {
+                "hobbie": "Swimming",
+                "rating": 2
+            }
+            ,
+            {
+                "hobbie": "Cricket",
+                "rating": 2
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Omar",
+        "age": 31,
+        "hobbies": [
+            {
+                "hobbie": "Baseball",
+                "rating": 5
+            },
+            {
+                "hobbie": "Running",
+                "rating": 5
+            },
+            {
+                "hobbie": "Chess",
+                "rating": 5
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Khalid",
+        "age": 41,
+        "hobbies": [
+            {
+                "hobbie": "Soccer",
+                "rating": 3
+            }
+        ]
+    }
+]

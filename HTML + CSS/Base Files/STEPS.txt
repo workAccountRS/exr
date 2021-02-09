@@ -1,0 +1,182 @@
+index.html
+
+---- DEFINE CSS FILES
+
+------------- INSIDE BODY (without the class)
+ <header>
+        <div class="hero-text-box">
+            <h1>Goodbye junk food. Hello super healthy meals.</h1>
+            <a href="http://" target="_blank">I’m hungry</a>
+            <a href="http://" target="_blank">Show me more</a>
+
+        </div>
+    </header>
+=============================================================================
+
+style.css
+
+-----------
+
+
+----------- {FIRST ADD THR URL} ->  background-image: url(img/hero.jpg);
+ {ADJUST THE HEIGHT 100vh (100vw means 100% of the viewport)}
+ {ADD THE GRADIENT} -> linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8))
+
+header{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(img/hero.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+=====================================================
+
+---------- h1 has a top margin, remove it
+---------- change the color 
+---------- change the size (240% of the html doc)
+
+h1{
+    color: #ffffff;
+    margin: 0;
+    font-size: 240%;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 4px;
+}
+
+
+============ ADD <br> to h1
+
+.hero-text-box{
+position: absolute;
+width: 1140px;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+=============================================================================
+-> ADD CLASSES TO BUTTONS
+
+.btn{
+display: inline-block;
+padding: 10px 30px;
+font-weight: 300;
+text-decoration: none;
+color: rgb(255, 255, 255);
+}
+
+-------------------->  ADD TO h1 (TO MAKE SOME SPACE)
+  margin-bottom: 20px;
+
+==========================================
+
+.btn{
+display: inline-block;
+padding: 10px 30px;
+font-weight: 300;
+text-decoration: none;
+color: rgb(255, 255, 255);
+transition: background-color 200ms linear; /* Only background-color (for all use: all) , time (200ms)  */
+}
+
+.btn-1{
+background-color: #e67e22;
+margin-right: 15px;
+border-radius: 200px;
+}
+
+.btn-2{
+border:1px solid #e67e22;
+color: #e67e22;
+border-radius: 200px;
+}
+
+.btn-1:hover{
+    background-color: #9e5515;
+
+
+}
+
+.btn-2:hover{
+    color: #fff;
+    background-color: #bf6516;
+
+}
+
+===================================
+index.html
+
+add nav
+
+ <nav>
+            <div class='row'>
+                TEST
+            </div>
+ </nav>
+
+-----> ADD IMG and sections (LOGO) INSIDE DIV ROW
+<img class='logo' src="resources/img/logo-white.png" alt="">
+                <ul class="main-nav">
+                    <li><a href="">Section 1</a></li>
+                    <li><a href="">Section 2</a></li>
+                    <li><a href="">Section 3</a></li>
+                    <li><a href="">Section 4</a></li>
+                </ul>
+
+======================
+
+style.css
+
+-----------> ADD style
+
+.logo{
+    height: 100px;
+    width: auto;
+    float: left;
+}
+
+.main-nav{
+    float: right;
+    list-style: none;
+}
+
+.main-nav li{
+    display: inline;
+    margin-left: 40px;
+}
+
+.main-nav li a{
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 90%;
+}
+
+--------------------> Now add some marging from the top & center the buttons
+add margin-top to .logo & .main-nav ( margin-top: 20px; margin-top: 55px;)
+
+
+
+-------- ADD ROW MAX WIDTH:
+.row{
+    max-width: 1140px;
+    margin: 0 auto;
+    }
+
+--------------------> ADD ANIAMTION AND HOVER
+
+.main-nav li a{
+.....
+    border-bottom: transparent;
+    transition: border-bottom 200ms linear;
+}
+
+.main-nav li a:hover{
+    color: #bebebe;
+    padding-bottom: 3px;
+    border-bottom: 2px solid #bf6516;
+
+}
+

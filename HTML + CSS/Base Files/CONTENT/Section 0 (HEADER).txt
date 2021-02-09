@@ -1,0 +1,12 @@
+Section 0: Header with image and navigation
+Title: None
+
+Goodbye junk food. Hello super healthy meals.
+Button 1: I’m hungry (go down to sign up section)
+Button 2: Show me more (go down to next section)
+
+Main Navigation:
+1. Food delivery (Section 1)
+2. How it works (Section 3)
+3. Our cities (Section 4)
+4. Sign up (Section 6)
